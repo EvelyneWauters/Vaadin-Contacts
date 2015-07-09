@@ -1,5 +1,6 @@
 package be.vdab.contacts;
 
+import com.vaadin.server.UserError;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -8,6 +9,8 @@ public class ComponentTopLabel extends CustomComponent {
     Button contacts = new Button("Contacts");
     Button registration = new Button("Registration");
     Button login = new Button("Login");
+    Button crash = new Button("break it!");
+    Button evilButton = new Button("don't click here");
     Label placeFiller = new Label("");
 
     /**
@@ -23,6 +26,12 @@ public class ComponentTopLabel extends CustomComponent {
         login.addClickListener((event)-> {
             Notification.show("hello there!");
         });
+        crash.addClickListener((event)-> {
+            throw new NullPointerException();
+        });
+
+        evilButton.setComponentError(new UserError("bad kitty!"));
+
 
         contacts.setStyleName(ValoTheme.BUTTON_BORDERLESS);
         login.setStyleName(ValoTheme.BUTTON_BORDERLESS);
@@ -35,6 +44,8 @@ public class ComponentTopLabel extends CustomComponent {
 
         layout.addComponent(contacts);
         layout.addComponent(placeFiller);
+        layout.addComponent(crash);
+        layout.addComponent(evilButton);
         layout.addComponent(registration);
         layout.addComponent(login);
 

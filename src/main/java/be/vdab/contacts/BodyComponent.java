@@ -11,6 +11,7 @@ public class BodyComponent extends CustomComponent {
     Table table = new Table("Contact");
 
 
+
     /**
      * Constructor
      */
